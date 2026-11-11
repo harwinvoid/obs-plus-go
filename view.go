@@ -171,7 +171,7 @@ func (a *app) loginWide(c *ui.Context, w float32) {
 				ui.Column(c).Padding(44, 0, 0, 0).Gap(12).Children(func() {
 					rule(c, ink, 1)
 					ui.Row(c).Gap(22).Children(func() {
-						micro(c, "V0.1.0", 9, faint)
+						micro(c, "V0.0.1", 9, faint)
 						micro(c, "华为云 OBS", 9, faint)
 						micro(c, "原生 UI · 无浏览器内核", 9, faint)
 					})
