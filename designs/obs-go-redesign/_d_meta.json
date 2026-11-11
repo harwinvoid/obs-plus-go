@@ -1,0 +1,35 @@
+{
+  "type": "design",
+  "designSystems": [],
+  "primaryDesignSystem": null,
+  "assets": {
+    "OBS Go · UI 重设计": {
+      "versions": [
+        {
+          "path": "index.html",
+          "createdAt": "2026-11-11T08:14:13.732Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        }
+      ]
+    },
+    "OBS Go · 三方向对比": {
+      "versions": [
+        {
+          "path": "compare.html",
+          "createdAt": "2026-11-11T08:14:13.763Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1440,
+            "height": 1180
+          }
+        }
+      ]
+    }
+  },
+  "createdAt": "2026-11-11T08:14:13.733Z",
+  "updatedAt": "2026-11-11T08:14:13.764Z"
+}

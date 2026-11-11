@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- OBS Go · ink cloud, paper arrow, one blue square. -->
+  <rect width="1024" height="1024" rx="224" fill="#F1EFE7"/>
+  <g fill="#121212">
+    <circle cx="512" cy="462" r="176"/><circle cx="352" cy="560" r="132"/><circle cx="672" cy="556" r="120"/>
+    <rect x="300" y="540" width="440" height="170" rx="85"/>
+  </g>
+  <path d="M512 470 L588 596 L544 596 L544 700 L480 700 L480 596 L436 596 Z" fill="#F1EFE7"/>
+  <rect x="736" y="286" width="48" height="48" fill="#1B3BFF"/>
+</svg>

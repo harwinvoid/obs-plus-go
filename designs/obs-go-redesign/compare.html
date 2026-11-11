@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OBS Go · 三个方向并排</title>
+  <style>
+    :root {
+      --ink: #14232a;
+      --muted: #667981;
+      --line: #e3ebee;
+      --bg: #eef3f5;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Noto Sans SC", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      background-image: radial-gradient(1200px 500px at 15% 0%, rgba(14, 159, 142, 0.07), transparent 60%);
+      min-height: 100vh;
+      padding: 40px 32px 56px;
+    }
+    header { max-width: 1560px; margin: 0 auto 28px; display: flex; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+    .title { font-size: 30px; letter-spacing: -0.03em; margin: 0; font-weight: 750; }
+    .lede { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.75; max-width: 720px; }
+    .meta { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill { font-size: 11.5px; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; }
+    .grid { max-width: 1560px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 14px 40px rgba(16, 48, 56, 0.08); overflow: hidden; display: flex; flex-direction: column; }
+    .card-head { padding: 16px 18px 14px; display: flex; align-items: center; gap: 10px; }
+    .tag { width: 26px; height: 26px; border: 2px solid #0b0b0b; display: grid; place-items: center; background: #fff; color: #0b0b0b; font-size: 12px; font-weight: 800; }
+    .card:nth-child(1) .tag { background: #e2e6ff; }
+    .card:nth-child(2) .tag { background: #ff4d00; }
+    .card:nth-child(3) .tag { background: #c8ff2e; }
+    .card h2 { font-size: 14px; margin: 0; font-weight: 650; }
+    .card .sub { font-size: 11.5px; color: var(--muted); margin-left: auto; }
+    .frame { position: relative; margin: 0 12px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #f5f5f7; }
+    .frame iframe { width: 1080px; height: 700px; border: 0; transform-origin: 0 0; pointer-events: none; background: #fff; }
+    .frame a { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: 10px; text-decoration: none; color: #14232a; font-size: 11.5px; }
+    .frame a span { background: rgba(255, 255, 255, 0.92); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+    .frame a:hover span { background: #fff; }
+    .card-body { padding: 14px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .card p { margin: 0; font-size: 12px; line-height: 1.7; color: var(--muted); }
+    .card ul { margin: 2px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .card li { font-size: 11.5px; color: var(--muted); padding-left: 12px; position: relative; }
+    .card li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: #cfdde2; }
+    footer { max-width: 1560px; margin: 28px auto 0; display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
+    footer b { color: var(--ink); font-weight: 600; }
+    .note { max-width: 380px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1 class="title">OBS Go · UI 重设计</h1>
+      <p class="lede">
+        基于现有的 mygo 原生客户端（登录 → 桶 → 对象 → 传输）重画界面。三条方向都保持浅色底，
+        但把排版、结构与强调色推到更有性格的位置：A 是编辑式纸面，B 是新粗野硬边，C 是终端式工作台。
+        共用同一套交互状态，方便对比；每张画板可点开单独体验。
+      </p>
+    </div>
+    <div class="meta">
+      <span class="pill">mygo 原生控件可实现</span>
+      <span class="pill">中文 / 浅色</span>
+      <span class="pill">登录 · 浏览 · 传输 · 弹窗</span>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <div class="card-head">
+        <span class="tag">A</span>
+        <h2>静白</h2>
+        <span class="sub">原生列表</span>
+      </div>
+      <div class="frame" data-src="index.html?dir=a&screen=browse&embed=1">
+        <iframe title="方向 A 静白" src="index.html?dir=a&screen=browse&embed=1"></iframe>
+        <a href="index.html?dir=a&screen=browse" target="_blank" rel="noopener"><span>打开体验 ↗</span></a>
+      </div>
+      <div class="card-body">
+        <p>暖纸底 + 紧排大字号：标题、面包屑和桶名都放大，选中整行反白，只用一点克莱因蓝。</p>
+        <ul>
+          <li>编辑式层级：大标题、等宽小标签、极细分隔线</li>
+          <li>行高 40，长时间扫读不累</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <span class="tag">B</span>
+        <h2>浮卡</h2>
+        <span class="sub">轻盈卡片</span>
+      </div>
+      <div class="frame" data-src="index.html?dir=b&screen=browse&embed=1">
+        <iframe title="方向 B 浮卡" src="index.html?dir=b&screen=browse&embed=1"></iframe>
+        <a href="index.html?dir=b&screen=browse" target="_blank" rel="noopener"><span>打开体验 ↗</span></a>
+      </div>
+      <div class="card-body">
+        <p>2px 黑描边、硬投影、信号橙：侧栏和内容像两张贴纸，行号与等宽元数据带出工具感。</p>
+        <ul>
+          <li>按钮和卡片按下有位移与硬阴影</li>
+          <li>行高 46，选中用橙色整行标记</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <span class="tag">C</span>
+        <h2>密度台</h2>
+        <span class="sub">三栏工作台</span>
+      </div>
+      <div class="frame" data-src="index.html?dir=c&screen=browse&embed=1">
+        <iframe title="方向 C 密度台" src="index.html?dir=c&screen=browse&embed=1"></iframe>
+        <a href="index.html?dir=c&screen=browse" target="_blank" rel="noopener"><span>打开体验 ↗</span></a>
+      </div>
+      <div class="card-body">
+        <p>近白底 + 纯黑检查器 + 荧光青柠：全等宽字体、硬网格、行高 28，像一台对象存储终端。</p>
+        <ul>
+          <li>黑色顶部命令条与右侧元数据面板</li>
+          <li>适合运维/发布，一屏看到更多对象</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="note"><b>下一步：</b>选定方向后，我按该方向的布局、间距与配色改 mygo 原生 UI（表格、侧栏、弹窗都能直接落），并保留现有登录与传输逻辑。</div>
+    <div class="note"><b>范围说明：</b>三版共用同一套交互状态（搜索、选择、进目录、新建/删除、上传下载进度），只换视觉与结构，方便对比。</div>
+  </footer>
+
+  <script>
+    function fit() {
+      document.querySelectorAll(".frame").forEach(function (frame) {
+        var iframe = frame.querySelector("iframe");
+        var w = frame.clientWidth;
+        var scale = w / 1080;
+        iframe.style.transform = "scale(" + scale + ")";
+        frame.style.height = Math.round(700 * scale) + "px";
+      });
+    }
+    window.addEventListener("resize", fit);
+    window.addEventListener("load", fit);
+    setTimeout(fit, 60);
+  </script>
+</body>
+</html>
